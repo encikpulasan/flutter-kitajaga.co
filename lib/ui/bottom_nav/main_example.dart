@@ -3,7 +3,7 @@ import 'package:kitajaga/ui/bottom_nav/profile/profile_view.dart';
 import 'package:stacked/stacked.dart';
 
 import 'main_viewmodel.dart';
-import 'favorites/home_view.dart';
+import 'home/home_view.dart';
 import 'history/history_view.dart';
 
 class MainView extends StatefulWidget {

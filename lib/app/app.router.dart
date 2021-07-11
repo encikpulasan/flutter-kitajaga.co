@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 import '../ui/bottom_nav/main_example.dart';
-import '../ui/bottom_nav/favorites/home_view.dart';
+import '../ui/bottom_nav/home/home_view.dart';
 import '../ui/bottom_nav/history/history_view.dart';
 import '../ui/bottom_nav/profile/profile_view.dart';
 import '../ui/startup/startup_view.dart';

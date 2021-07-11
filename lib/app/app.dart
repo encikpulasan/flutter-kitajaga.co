@@ -1,7 +1,7 @@
 import 'package:kitajaga/services/information_service.dart';
 import 'package:kitajaga/ui/bottom_nav/main_example.dart';
-import 'package:kitajaga/ui/bottom_nav/favorites/home_view.dart';
-import 'package:kitajaga/ui/bottom_nav/favorites/home_viewmodel.dart';
+import 'package:kitajaga/ui/bottom_nav/home/home_view.dart';
+import 'package:kitajaga/ui/bottom_nav/home/home_viewmodel.dart';
 import 'package:kitajaga/ui/bottom_nav/history/history_view.dart';
 import 'package:kitajaga/ui/bottom_nav/history/history_viewmodel.dart';
 import 'package:kitajaga/ui/bottom_nav/profile/profile_view.dart';
