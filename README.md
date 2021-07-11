@@ -1,6 +1,6 @@
 # kitajaga
 
-A new Flutter project.
+A flutter app with data scrapped from kitajaga.co
 
 ## Getting Started
 
