@@ -4,7 +4,7 @@ import 'package:kitajaga/models/helpers/helpers.dart';
 import 'package:kitajaga/models/helps/helps.dart';
 
 abstract class Api {
-  Future<void> getToken();
+  Future<bool> getToken();
 
   Future<Helps?> getHelps({int limit = 15000});
   Future<HelpDetails?> getHelp(int helpId);

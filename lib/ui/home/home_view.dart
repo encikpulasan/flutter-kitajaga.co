@@ -9,19 +9,21 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
       viewModelBuilder: () => HomeViewModel(),
-      onModelReady: (model) => model.getHelps(),
       disposeViewModel: false,
       fireOnModelReadyOnce: true,
+      onModelReady: (model) => model.getHelps(),
       builder: (context, viewModel, child) => Scaffold(
         floatingActionButton: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             FloatingActionButton(
+              heroTag: 'increment',
               onPressed: () => viewModel.incrementCounter(),
               child: Icon(Icons.add),
             ),
             SizedBox(height: 16),
             FloatingActionButton(
+              heroTag: 'decrement',
               onPressed: () => viewModel.decrementCounter(),
               child: Icon(Icons.remove),
             ),

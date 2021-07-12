@@ -79,7 +79,7 @@ class ApiImpl implements Api {
   }
 
   @override
-  Future<void> getToken() async {
+  Future<bool> getToken() async {
     var result = await httpRequest(
       'o/token/',
       POST,
@@ -90,9 +90,11 @@ class ApiImpl implements Api {
       if (!result.toString().contains('error')) {
         Auth auth = Auth.fromJson(result);
         _informationService.setBearerToken('Bearer ${auth.accessToken!}');
-        print('Bearer ${_informationService.bearerToken}');
+        print('${_informationService.bearerToken}');
+        return true;
       }
     }
+    return false;
   }
 
   @override

@@ -18,9 +18,10 @@ class ApiFake implements Api {
   InformationService _informationService = locator<InformationService>();
 
   @override
-  Future<void> getToken() async {
+  Future<bool> getToken() async {
     Auth auth = Auth.fromJson(jsonDecode(fakeGetToken));
     _informationService.setBearerToken(auth.accessToken!);
+    return true;
   }
 
   @override

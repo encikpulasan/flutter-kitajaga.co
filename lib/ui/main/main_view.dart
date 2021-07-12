@@ -34,11 +34,11 @@ class _MainViewState extends State<MainView> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.access_alarm),
-              label: "Alarm",
+              label: "History",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.access_alarms),
-              label: "Alarm",
+              label: "Profile",
             ),
           ],
         ),
