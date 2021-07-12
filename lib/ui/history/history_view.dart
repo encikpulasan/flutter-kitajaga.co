@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kitajaga/app/app.locator.dart';
 import 'package:kitajaga/ui/history/history_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
@@ -10,7 +9,7 @@ class HistoryView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<HistoryViewModel>.reactive(
       initialiseSpecialViewModelsOnce: true,
-      viewModelBuilder: () => locator<HistoryViewModel>(),
+      viewModelBuilder: () => HistoryViewModel(),
       disposeViewModel: false,
       builder: (context, viewModel, child) => Scaffold(
         body: Center(

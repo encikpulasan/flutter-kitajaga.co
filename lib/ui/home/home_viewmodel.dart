@@ -1,5 +1,6 @@
 import 'package:kitajaga/api/api.dart';
 import 'package:kitajaga/app/app.locator.dart';
+import 'package:kitajaga/models/helps/helps.dart';
 import 'package:stacked/stacked.dart';
 
 class HomeViewModel extends BaseViewModel {
@@ -10,13 +11,21 @@ class HomeViewModel extends BaseViewModel {
     notifyListeners();
   }
 
+  void decrementCounter() {
+    _counter--;
+    notifyListeners();
+  }
+
   void setCounterTo999() {
     _counter = 999;
     notifyListeners();
   }
 
   Future<void> getHelps() async {
-    var result = await locator<Api>().getHelps();
-    print(result.toString());
+    Helps? result = await locator<Api>().getHelps();
+    if (result != null) {
+      _counter = result.count!;
+      notifyListeners();
+    }
   }
 }

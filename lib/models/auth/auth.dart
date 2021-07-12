@@ -4,7 +4,7 @@ part 'auth.freezed.dart';
 part 'auth.g.dart';
 
 @freezed
-abstract class Auth with _$Auth {
+class Auth with _$Auth {
   const factory Auth({
     String? accessToken,
     int? expiresIn,

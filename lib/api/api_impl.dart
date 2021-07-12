@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' as Dio;
 import 'package:kitajaga/api/api.dart';
 import 'package:kitajaga/app/app.locator.dart';
 import 'package:kitajaga/models/helps/helps.dart';
@@ -30,22 +30,23 @@ class ApiImpl implements Api {
     String method, {
     bool requiresToken = true,
     String token = basicToken,
+    bool formData = false,
     Map<String, dynamic>? data,
   }) async {
-    final _dio = Dio();
+    final _dio = Dio.Dio();
     _dio.options.baseUrl = BaseUrl;
     try {
-      Dio http = _dio;
+      Dio.Dio http = _dio;
       var response = await http.request(
         '/' + path,
-        options: Options(
+        options: Dio.Options(
           method: method,
           headers: requiresToken ? {Authorization: token} : null,
         ),
-        data: jsonEncode(data),
+        data: formData ? Dio.FormData.fromMap(data!) : jsonEncode(data),
       );
       return response.data;
-    } on DioError catch (e) {
+    } on Dio.DioError catch (e) {
       if (e.error is SocketException) {
         _snackbarService.showSnackbar(message: "We can't seem to reach you. Please check your internet connection.");
         throw SocketException(e.message);
@@ -82,11 +83,13 @@ class ApiImpl implements Api {
     var result = await httpRequest(
       'o/token/',
       POST,
+      formData: true,
+      data: {'grant_type': 'client_credentials'},
     );
     if (result != null) {
       if (!result.toString().contains('error')) {
-        Auth? auth = Auth.fromJson(result);
-        _informationService.setBearerToken(auth.accessToken!);
+        Auth auth = Auth.fromJson(result);
+        _informationService.setBearerToken('Bearer ${auth.accessToken!}');
         print('Bearer ${_informationService.bearerToken}');
       }
     }

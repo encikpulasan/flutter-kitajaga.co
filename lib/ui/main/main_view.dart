@@ -19,6 +19,7 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<MainViewModel>.reactive(
+      viewModelBuilder: () => MainViewModel(),
       builder: (context, viewModel, child) => Scaffold(
         body: getViewForIndex(viewModel.currentTabIndex),
         bottomNavigationBar: BottomNavigationBar(
@@ -42,7 +43,6 @@ class _MainViewState extends State<MainView> {
           ],
         ),
       ),
-      viewModelBuilder: () => MainViewModel(),
     );
   }
 

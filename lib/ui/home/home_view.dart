@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kitajaga/app/app.locator.dart';
 import 'package:kitajaga/ui/home/home_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
@@ -9,19 +8,32 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
-      builder: (context, viewModel, child) => Scaffold(
-          floatingActionButton: FloatingActionButton(
-            onPressed: () => viewModel.incrementCounter(),
-          ),
-          body: Center(
-              child: Text(
-            viewModel.counter.toString(),
-            style: TextStyle(fontSize: 30),
-          ))),
-      viewModelBuilder: () => locator<HomeViewModel>(),
+      viewModelBuilder: () => HomeViewModel(),
       onModelReady: (model) => model.getHelps(),
       disposeViewModel: false,
       fireOnModelReadyOnce: true,
+      builder: (context, viewModel, child) => Scaffold(
+        floatingActionButton: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            FloatingActionButton(
+              onPressed: () => viewModel.incrementCounter(),
+              child: Icon(Icons.add),
+            ),
+            SizedBox(height: 16),
+            FloatingActionButton(
+              onPressed: () => viewModel.decrementCounter(),
+              child: Icon(Icons.remove),
+            ),
+          ],
+        ),
+        body: Center(
+          child: Text(
+            viewModel.counter.toString(),
+            style: TextStyle(fontSize: 30),
+          ),
+        ),
+      ),
     );
   }
 }

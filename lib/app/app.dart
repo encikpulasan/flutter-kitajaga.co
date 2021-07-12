@@ -33,6 +33,8 @@ import 'package:stacked_themes/stacked_themes.dart';
 
     // Data sources
     LazySingleton(classType: ApiImpl, asType: Api),
+
+    Singleton()
   ],
   logger: StackedLogger(loggerOutputs: [CrashlyticsOutput]),
   locatorName: 'locator',
