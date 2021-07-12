@@ -11,9 +11,9 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked_themes/stacked_themes.dart';
 
+import '../api/api.dart';
+import '../api/api_impl.dart';
 import '../services/information_service.dart';
-import '../ui/bottom_nav/favorites/home_viewmodel.dart';
-import '../ui/bottom_nav/history/history_viewmodel.dart';
 
 final locator = StackedLocator.instance;
 
@@ -24,11 +24,11 @@ void setupLocator({String? environment, EnvironmentFilter? environmentFilter}) {
 
 // Register dependencies
   locator.registerLazySingleton(() => DialogService());
+  locator.registerLazySingleton(() => SnackbarService());
   locator.registerLazySingleton(() => BottomSheetService());
   locator.registerLazySingleton(() => InformationService());
   locator
       .registerLazySingleton(() => NavigationService(), registerFor: {"dev"});
   locator.registerLazySingleton(() => ThemeService.getInstance());
-  locator.registerSingleton(HistoryViewModel());
-  locator.registerSingleton(HomeViewModel());
+  locator.registerLazySingleton<Api>(() => ApiImpl());
 }

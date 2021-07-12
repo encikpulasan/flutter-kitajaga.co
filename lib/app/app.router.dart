@@ -9,22 +9,22 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import '../ui/bottom_nav/main_example.dart';
-import '../ui/bottom_nav/home/home_view.dart';
-import '../ui/bottom_nav/history/history_view.dart';
-import '../ui/bottom_nav/profile/profile_view.dart';
+import '../ui/history/history_view.dart';
+import '../ui/home/home_view.dart';
+import '../ui/main/main_view.dart';
+import '../ui/profile/profile_view.dart';
 import '../ui/startup/startup_view.dart';
 
 class Routes {
   static const String startupView = '/';
-  static const String bottomNavExample = '/bottom-nav-example';
-  static const String favoritesView = '/favorites-view';
+  static const String mainView = '/main-view';
+  static const String homeView = '/home-view';
   static const String profileView = '/profile-view';
   static const String historyView = '/history-view';
   static const all = <String>{
     startupView,
-    bottomNavExample,
-    favoritesView,
+    mainView,
+    homeView,
     profileView,
     historyView,
   };
@@ -35,8 +35,8 @@ class StackedRouter extends RouterBase {
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
     RouteDef(Routes.startupView, page: StartupView),
-    RouteDef(Routes.bottomNavExample, page: MainView),
-    RouteDef(Routes.favoritesView, page: HomeView),
+    RouteDef(Routes.mainView, page: MainView),
+    RouteDef(Routes.homeView, page: HomeView),
     RouteDef(Routes.profileView, page: ProfileView),
     RouteDef(Routes.historyView, page: HistoryView),
   ];

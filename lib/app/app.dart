@@ -1,10 +1,10 @@
+import 'package:kitajaga/api/api.dart';
+import 'package:kitajaga/api/api_impl.dart';
 import 'package:kitajaga/services/information_service.dart';
-import 'package:kitajaga/ui/bottom_nav/main_example.dart';
-import 'package:kitajaga/ui/bottom_nav/home/home_view.dart';
-import 'package:kitajaga/ui/bottom_nav/home/home_viewmodel.dart';
-import 'package:kitajaga/ui/bottom_nav/history/history_view.dart';
-import 'package:kitajaga/ui/bottom_nav/history/history_viewmodel.dart';
-import 'package:kitajaga/ui/bottom_nav/profile/profile_view.dart';
+import 'package:kitajaga/ui/history/history_view.dart';
+import 'package:kitajaga/ui/home/home_view.dart';
+import 'package:kitajaga/ui/main/main_view.dart';
+import 'package:kitajaga/ui/profile/profile_view.dart';
 import 'package:kitajaga/ui/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_crashlytics/stacked_crashlytics.dart';
@@ -31,9 +31,8 @@ import 'package:stacked_themes/stacked_themes.dart';
       resolveUsing: ThemeService.getInstance,
     ),
 
-    // singletons
-    Singleton(classType: HistoryViewModel),
-    Singleton(classType: HomeViewModel),
+    // Data sources
+    LazySingleton(classType: ApiImpl, asType: Api),
   ],
   logger: StackedLogger(loggerOutputs: [CrashlyticsOutput]),
   locatorName: 'locator',

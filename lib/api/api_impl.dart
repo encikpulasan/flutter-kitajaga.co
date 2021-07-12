@@ -79,19 +79,32 @@ class ApiImpl implements Api {
 
   @override
   Future<void> getToken() async {
-    var result = await httpRequest('o/token/', POST);
-    if (!result.toString().contains('error')) {
-      if (result != null) {
+    var result = await httpRequest(
+      'o/token/',
+      POST,
+    );
+    if (result != null) {
+      if (!result.toString().contains('error')) {
         Auth? auth = Auth.fromJson(result);
         _informationService.setBearerToken(auth.accessToken!);
+        print('Bearer ${_informationService.bearerToken}');
       }
     }
   }
 
   @override
-  Future<Helps> getHelps({int limit = 15000}) {
-    // TODO: implement getHelps
-    throw UnimplementedError();
+  Future<Helps?> getHelps({int limit = 15000}) async {
+    var result = await httpRequest(
+      'api/help/?limit=$limit',
+      GET,
+      token: _informationService.bearerToken!,
+    );
+    if (result != null) {
+      if (!result.toString().contains('error')) {
+        return Helps.fromJson(result);
+      }
+    }
+    return null;
   }
 
   @override

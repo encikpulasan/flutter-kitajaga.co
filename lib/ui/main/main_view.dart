@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:kitajaga/ui/bottom_nav/profile/profile_view.dart';
+import 'package:kitajaga/ui/history/history_view.dart';
+import 'package:kitajaga/ui/home/home_view.dart';
+import 'package:kitajaga/ui/profile/profile_view.dart';
 import 'package:stacked/stacked.dart';
 
 import 'main_viewmodel.dart';
-import 'home/home_view.dart';
-import 'history/history_view.dart';
 
 class MainView extends StatefulWidget {
   const MainView({Key? key}) : super(key: key);

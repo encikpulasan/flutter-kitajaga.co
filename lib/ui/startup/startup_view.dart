@@ -9,6 +9,7 @@ class StartupView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<StartupVieWModel>.reactive(
       viewModelBuilder: () => StartupVieWModel(),
+      onModelReady: (model) => model.authenticate(),
       builder: (context, model, child) => Scaffold(
         body: Center(
           child: ElevatedButton(

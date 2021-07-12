@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kitajaga/app/app.locator.dart';
+import 'package:kitajaga/ui/home/home_viewmodel.dart';
 import 'package:stacked/stacked.dart';
-
-import '../../../app/app.locator.dart';
-import 'home_viewmodel.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -21,7 +19,7 @@ class HomeView extends StatelessWidget {
             style: TextStyle(fontSize: 30),
           ))),
       viewModelBuilder: () => locator<HomeViewModel>(),
-      onModelReady: (viewModel) => viewModel.setCounterTo999(),
+      onModelReady: (model) => model.getHelps(),
       disposeViewModel: false,
       fireOnModelReadyOnce: true,
     );
