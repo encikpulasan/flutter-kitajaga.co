@@ -8,7 +8,16 @@ class InformationService with ReactiveServiceMixin {
 
   void resetCount() => _postCount.value = 0;
 
+  ReactiveValue<String?> _bearerToken = ReactiveValue(null);
+  String? get bearerToken => _bearerToken.value;
+  void setBearerToken(String token) {
+    _bearerToken.value = token;
+  }
+
   InformationService() {
-    listenToReactiveValues([_postCount]);
+    listenToReactiveValues([
+      _postCount,
+      _bearerToken,
+    ]);
   }
 }

@@ -6,16 +6,21 @@ import 'package:kitajaga/api/fake_response/help_details.dart';
 import 'package:kitajaga/api/fake_response/helper_details.dart';
 import 'package:kitajaga/api/fake_response/helpers.dart';
 import 'package:kitajaga/api/fake_response/helps.dart';
+import 'package:kitajaga/app/app.locator.dart';
 import 'package:kitajaga/models/helps/helps.dart';
 import 'package:kitajaga/models/helpers/helpers.dart';
 import 'package:kitajaga/models/helper_details/helper_details.dart';
 import 'package:kitajaga/models/help_details/help_details.dart';
 import 'package:kitajaga/models/auth/auth.dart';
+import 'package:kitajaga/services/information_service.dart';
 
 class ApiFake implements Api {
+  InformationService _informationService = locator<InformationService>();
+
   @override
-  Future<Auth> getToken({String basic = authentication}) async {
-    return Auth.fromJson(jsonDecode(fakeGetToken));
+  Future<void> getToken() async {
+    Auth auth = Auth.fromJson(jsonDecode(fakeGetToken));
+    _informationService.setBearerToken(auth.accessToken!);
   }
 
   @override
