@@ -113,44 +113,111 @@ class ApiImpl implements Api {
   }
 
   @override
-  Future<HelpDetails> getHelp(int helpId) {
-    // TODO: implement getHelp
-    throw UnimplementedError();
+  Future<HelpDetails?> getHelp(int helpId) async {
+    var result = await httpRequest(
+      'api/help/$helpId',
+      GET,
+      token: _informationService.bearerToken!,
+    );
+    if (result != null) {
+      if (!result.toString().contains('error')) {
+        return HelpDetails.fromJson(result);
+      }
+    }
+    return null;
   }
 
   @override
-  Future<HelpDetails> postHelp(HelpDetails data) {
-    // TODO: implement postHelp
-    throw UnimplementedError();
+  Future<HelpDetails?> postHelp(HelpDetails data) async {
+    var result = await httpRequest(
+      'api/help/',
+      POST,
+      token: _informationService.bearerToken!,
+      data: data.toJson(),
+    );
+    if (result != null) {
+      if (!result.toString().contains('error')) {
+        return HelpDetails.fromJson(result);
+      }
+    }
+    return null;
   }
 
   @override
-  Future<HelpDetails> putHelp(HelpDetails data) {
-    // TODO: implement putHelp
-    throw UnimplementedError();
+  Future<HelpDetails?> putHelp(HelpDetails data) async {
+    var result = await httpRequest(
+      'api/help/${data.id}',
+      PUT,
+      token: _informationService.bearerToken!,
+      data: data.toJson(),
+    );
+    if (result != null) {
+      if (!result.toString().contains('error')) {
+        return HelpDetails.fromJson(result);
+      }
+    }
+    return null;
   }
 
   @override
-  Future<Helpers> getHelpers({int limit = 15000}) {
-    // TODO: implement getHelpers
-    throw UnimplementedError();
+  Future<Helpers?> getHelpers({int limit = 15000}) async {
+    var result = await httpRequest(
+      'api/helper/?limit=$limit',
+      GET,
+      token: _informationService.bearerToken!,
+    );
+    if (result != null) {
+      if (!result.toString().contains('error')) {
+        return Helpers.fromJson(result);
+      }
+    }
+    return null;
   }
 
   @override
-  Future<HelperDetails> getHelper(int helperId) {
-    // TODO: implement getHelper
-    throw UnimplementedError();
+  Future<HelperDetails?> getHelper(int helperId) async {
+    var result = await httpRequest(
+      'api/helper/$helperId',
+      GET,
+      token: _informationService.bearerToken!,
+    );
+    if (result != null) {
+      if (!result.toString().contains('error')) {
+        return HelperDetails.fromJson(result);
+      }
+    }
+    return null;
   }
 
   @override
-  Future<HelperDetails> postHelper(HelperDetails data) {
-    // TODO: implement postHelper
-    throw UnimplementedError();
+  Future<HelperDetails?> postHelper(HelperDetails data) async {
+    var result = await httpRequest(
+      'api/helper/',
+      POST,
+      token: _informationService.bearerToken!,
+      data: data.toJson(),
+    );
+    if (result != null) {
+      if (!result.toString().contains('error')) {
+        return HelperDetails.fromJson(result);
+      }
+    }
+    return null;
   }
 
   @override
-  Future<HelperDetails> putHelper(HelperDetails data) {
-    // TODO: implement putHelper
-    throw UnimplementedError();
+  Future<HelperDetails?> putHelper(HelperDetails data) async {
+    var result = await httpRequest(
+      'api/help/${data.id}',
+      PUT,
+      token: _informationService.bearerToken!,
+      data: data.toJson(),
+    );
+    if (result != null) {
+      if (!result.toString().contains('error')) {
+        return HelperDetails.fromJson(result);
+      }
+    }
+    return null;
   }
 }
